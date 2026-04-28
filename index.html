@@ -335,7 +335,8 @@ tr:hover td{background:var(--surface2)}
 <script>
 const SUPABASE_URL = 'https://zrmnwkbhqpburvvmgzus.supabase.co';
 const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpybW53a2JocXBidXJ2dm1nenVzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzczNjE0NDQsImV4cCI6MjA5MjkzNzQ0NH0.TMpsT4b_3gGX6rcmxEjLTZHkEE3AoiWsVkSP-j97M_s';
-const db = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+const { createClient } = supabase;
+const db = createClient(SUPABASE_URL, SUPABASE_KEY);
 
 // ---- STATE ----
 const state = {fr:[],wr:[],cal:[],fit:[],sl:[],frLevel:'A1'};
