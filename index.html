@@ -11,7 +11,6 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
-  /* GitHub Dark exact tokens */
   --color-canvas-default:#0d1117;
   --color-canvas-subtle:#161b22;
   --color-canvas-inset:#010409;
@@ -58,374 +57,64 @@ body{
   line-height:1.5;
 }
 
-/* ─── GATE ─── */
-#gate{
-  position:fixed;inset:0;
-  background:var(--color-canvas-default);
-  display:flex;align-items:center;justify-content:center;
-  z-index:9999;flex-direction:column;gap:16px;
-}
-.gate-box{
-  background:var(--color-canvas-subtle);
-  border:1px solid var(--color-border-default);
-  border-radius:var(--radius-lg);
-  padding:32px;width:340px;
-  display:flex;flex-direction:column;gap:16px;
-}
-.gate-logo{
-  font-family:var(--font-mono);font-size:13px;
-  color:var(--color-fg-muted);margin-bottom:8px;
-}
-.gate-logo span{color:var(--color-fg-default);font-weight:600}
-.gate-title{font-size:20px;font-weight:600;color:var(--color-fg-default)}
-.gate-sub{font-size:12px;color:var(--color-fg-muted)}
-.gate-err{font-size:12px;color:var(--color-danger-fg);min-height:16px}
-
-/* ─── APP SHELL ─── */
+/* APP SHELL */
 .app{display:flex;flex-direction:column;min-height:100vh}
-
-/* Header */
-.header{
-  height:48px;
-  background:var(--color-canvas-subtle);
-  border-bottom:1px solid var(--color-border-default);
-  display:flex;align-items:center;
-  padding:0 16px;gap:16px;
-  position:sticky;top:0;z-index:100;
-}
-.header-logo{
-  font-family:var(--font-mono);font-size:13px;font-weight:600;
-  color:var(--color-fg-default);white-space:nowrap;
-  display:flex;align-items:center;gap:8px;
-}
-.header-logo svg{color:var(--color-fg-muted)}
-.header-divider{color:var(--color-border-default);font-size:18px;font-weight:300}
+.header{height:48px;background:var(--color-canvas-subtle);border-bottom:1px solid var(--color-border-default);display:flex;align-items:center;padding:0 16px;gap:16px;position:sticky;top:0;z-index:100}
+.header-logo{font-family:var(--font-mono);font-size:13px;font-weight:600;color:var(--color-fg-default);white-space:nowrap;display:flex;align-items:center;gap:8px}
 .header-repo{font-family:var(--font-mono);font-size:13px;color:var(--color-accent-fg);font-weight:600}
-
-/* Tab nav */
-.tab-nav{
-  background:var(--color-canvas-subtle);
-  border-bottom:1px solid var(--color-border-default);
-  display:flex;align-items:flex-end;
-  padding:0 16px;
-  overflow-x:auto;
-}
-.tab-nav::-webkit-scrollbar{height:0}
-.tab-btn{
-  display:flex;align-items:center;gap:6px;
-  padding:8px 16px;
-  font-size:13px;font-weight:500;
-  color:var(--color-fg-muted);
-  background:transparent;border:none;cursor:pointer;
-  border-bottom:2px solid transparent;
-  margin-bottom:-1px;
-  white-space:nowrap;
-  font-family:var(--font-body);
-  transition:color .12s,border-color .12s;
-}
+.tab-nav{background:var(--color-canvas-subtle);border-bottom:1px solid var(--color-border-default);display:flex;align-items:flex-end;padding:0 16px;overflow-x:auto}
+.tab-btn{display:flex;align-items:center;gap:6px;padding:8px 16px;font-size:13px;font-weight:500;color:var(--color-fg-muted);background:transparent;border:none;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;white-space:nowrap;font-family:var(--font-body);transition:color .12s,border-color .12s}
 .tab-btn:hover{color:var(--color-fg-default)}
-.tab-btn.active{
-  color:var(--color-fg-default);
-  border-bottom-color:#f78166;
-}
-.tab-btn .tab-icon{font-size:14px}
-.tab-count{
-  background:var(--color-border-default);
-  color:var(--color-fg-muted);
-  font-family:var(--font-mono);
-  font-size:11px;
-  padding:0 6px;height:18px;line-height:18px;
-  border-radius:20px;
-}
-.tab-btn.active .tab-count{
-  background:var(--color-attention-emphasis);
-  color:#fff;
-}
-
-/* Layout */
+.tab-btn.active{color:var(--color-fg-default);border-bottom-color:#f78166}
+.tab-count{background:var(--color-border-default);color:var(--color-fg-muted);font-family:var(--font-mono);font-size:11px;padding:0 6px;height:18px;line-height:18px;border-radius:20px}
+.tab-btn.active .tab-count{background:var(--color-attention-emphasis);color:#fff}
 .layout{display:flex;flex:1;min-height:0}
-.sidebar{
-  width:256px;flex-shrink:0;
-  border-right:1px solid var(--color-border-default);
-  padding:16px 0;
-  display:flex;flex-direction:column;gap:4px;
-}
+.sidebar{width:256px;flex-shrink:0;border-right:1px solid var(--color-border-default);padding:16px 0;display:flex;flex-direction:column;gap:4px}
 .side-section{padding:0 8px;margin-bottom:8px}
 .side-label{font-size:11px;font-weight:600;color:var(--color-fg-subtle);letter-spacing:.5px;text-transform:uppercase;padding:4px 8px;margin-bottom:2px}
-.side-btn{
-  display:flex;align-items:center;gap:8px;
-  padding:6px 8px;border-radius:var(--radius-sm);
-  font-size:13px;color:var(--color-fg-muted);
-  background:transparent;border:none;cursor:pointer;
-  font-family:var(--font-body);width:100%;text-align:left;
-  transition:background .1s,color .1s;
-}
+.side-btn{display:flex;align-items:center;gap:8px;padding:6px 8px;border-radius:var(--radius-sm);font-size:13px;color:var(--color-fg-muted);background:transparent;border:none;cursor:pointer;font-family:var(--font-body);width:100%;text-align:left;transition:background .1s,color .1s}
 .side-btn:hover{background:var(--color-canvas-inset);color:var(--color-fg-default)}
 .side-btn.active{background:rgba(56,139,253,0.15);color:var(--color-accent-fg);font-weight:500}
 .side-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
 .side-count{margin-left:auto;font-family:var(--font-mono);font-size:11px;color:var(--color-fg-subtle);background:var(--color-canvas-inset);border:1px solid var(--color-border-muted);border-radius:20px;padding:0 6px;height:16px;line-height:16px}
-
 .main{flex:1;overflow-y:auto;padding:24px;max-width:900px}
-
-/* Pages */
 .page{display:none}.page.active{display:block}
-
-/* ─── COMPONENTS ─── */
-
-/* Section header */
-.section-header{
-  display:flex;align-items:center;justify-content:space-between;
-  margin-bottom:16px;padding-bottom:16px;
-  border-bottom:1px solid var(--color-border-muted);
-}
+.section-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid var(--color-border-muted)}
 .section-title{font-size:20px;font-weight:600;color:var(--color-fg-default)}
-
-/* Cards / boxes */
-.box{
-  background:var(--color-canvas-subtle);
-  border:1px solid var(--color-border-default);
-  border-radius:var(--radius-md);
-  margin-bottom:16px;
-  overflow:hidden;
-}
-.box-header{
-  padding:12px 16px;
-  border-bottom:1px solid var(--color-border-muted);
-  display:flex;align-items:center;justify-content:space-between;
-  background:var(--color-canvas-subtle);
-}
+.box{background:var(--color-canvas-subtle);border:1px solid var(--color-border-default);border-radius:var(--radius-md);margin-bottom:16px;overflow:hidden}
+.box-header{padding:12px 16px;border-bottom:1px solid var(--color-border-muted);display:flex;align-items:center;justify-content:space-between;background:var(--color-canvas-subtle)}
 .box-title{font-size:14px;font-weight:600;color:var(--color-fg-default);display:flex;align-items:center;gap:8px}
 .box-body{padding:16px}
-
-/* Stat grid */
 .stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--color-border-muted);border:1px solid var(--color-border-muted);border-radius:var(--radius-md);overflow:hidden;margin-bottom:16px}
 .stat-cell{background:var(--color-canvas-subtle);padding:16px}
 .stat-label{font-size:11px;font-weight:600;color:var(--color-fg-subtle);letter-spacing:.4px;text-transform:uppercase;margin-bottom:6px}
 .stat-val{font-size:24px;font-weight:600;font-family:var(--font-mono);color:var(--color-fg-default)}
 .stat-sub{font-size:11px;color:var(--color-fg-muted);margin-top:2px}
-
-/* Inputs */
 .field{margin-bottom:12px}
 .field-label{display:block;font-size:12px;font-weight:600;color:var(--color-fg-default);margin-bottom:6px}
-input[type=text],input[type=number],input[type=date],input[type=time],input[type=datetime-local],input[type=password],select,textarea{
-  width:100%;
-  background:var(--color-canvas-inset);
-  border:1px solid var(--color-border-default);
-  border-radius:var(--radius-sm);
-  color:var(--color-fg-default);
-  font-family:var(--font-body);
-  font-size:14px;
-  padding:5px 12px;
-  height:32px;
-  transition:border-color .15s,box-shadow .15s;
-  outline:none;
-}
-textarea{height:auto;padding:8px 12px;resize:vertical}
-input:focus,select:focus,textarea:focus{
-  border-color:var(--color-accent-fg);
-  box-shadow:0 0 0 3px rgba(31,111,235,0.3);
-}
-select option{background:var(--color-canvas-subtle)}
-input[type=range]{
-  height:4px;padding:0;border:none;background:var(--color-border-default);
-  accent-color:var(--color-accent-fg);
-  box-shadow:none;
-}
-input[type=range]:focus{box-shadow:none;border:none}
-
-/* Grid helpers */
-.g2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
-.g4{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:12px}
-.row{display:flex;gap:8px;align-items:center}
-.row-between{display:flex;justify-content:space-between;align-items:center;gap:8px}
-.mt{margin-top:12px}.mt16{margin-top:16px}
-
-/* Buttons */
-.btn{
-  display:inline-flex;align-items:center;gap:6px;
-  height:32px;padding:0 12px;
-  font-size:14px;font-weight:500;font-family:var(--font-body);
-  border-radius:var(--radius-sm);
-  border:1px solid var(--color-border-default);
-  background:var(--color-canvas-subtle);
-  color:var(--color-fg-default);
-  cursor:pointer;white-space:nowrap;
-  transition:background .1s,border-color .1s,box-shadow .1s;
-  box-shadow:var(--color-primer-shadow-inset);
-}
-.btn:hover{background:var(--color-border-muted);border-color:var(--color-border-default)}
-.btn:active{box-shadow:none;background:var(--color-canvas-inset)}
+input[type=text],input[type=number],input[type=date],input[type=time],input[type=datetime-local],input[type=password],select,textarea{width:100%;background:var(--color-canvas-inset);border:1px solid var(--color-border-default);border-radius:var(--radius-sm);color:var(--color-fg-default);font-family:var(--font-body);font-size:14px;padding:5px 12px;height:32px;outline:none}
+input:focus,select:focus,textarea:focus{border-color:var(--color-accent-fg);box-shadow:0 0 0 3px rgba(31,111,235,0.3)}
+.btn{display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 12px;font-size:14px;font-weight:500;border-radius:var(--radius-sm);border:1px solid var(--color-border-default);background:var(--color-canvas-subtle);color:var(--color-fg-default);cursor:pointer;white-space:nowrap}
 .btn-primary{background:var(--color-success-emphasis);border-color:rgba(240,246,252,0.1);color:#fff}
-.btn-primary:hover{background:#2ea043;border-color:rgba(240,246,252,0.1)}
-.btn-danger{color:var(--color-danger-fg);border-color:var(--color-border-default)}
-.btn-danger:hover{background:var(--color-danger-muted);border-color:var(--color-danger-fg)}
-.btn-sm{height:26px;padding:0 10px;font-size:12px}
-.btn:disabled{opacity:.5;cursor:not-allowed}
-
-/* Labels / badges */
-.badge{
-  display:inline-flex;align-items:center;
-  height:20px;padding:0 8px;
-  font-size:12px;font-weight:500;
-  border-radius:20px;
-  border:1px solid transparent;
-}
+.badge{display:inline-flex;align-items:center;height:20px;padding:0 8px;font-size:12px;font-weight:500;border-radius:20px;border:1px solid transparent}
 .badge-blue{background:var(--color-accent-muted);border-color:var(--color-accent-fg);color:var(--color-accent-fg)}
-.badge-green{background:var(--color-success-muted);border-color:var(--color-success-fg);color:var(--color-success-fg)}
-.badge-yellow{background:var(--color-attention-muted);border-color:var(--color-attention-fg);color:var(--color-attention-fg)}
-.badge-purple{background:var(--color-done-muted);border-color:var(--color-done-fg);color:var(--color-done-fg)}
-.badge-red{background:var(--color-danger-muted);border-color:var(--color-danger-fg);color:var(--color-danger-fg)}
-.badge-gray{background:var(--color-canvas-inset);border-color:var(--color-border-default);color:var(--color-fg-muted)}
-
-/* Progress */
 .progress-wrap{background:var(--color-border-muted);border-radius:6px;height:8px;overflow:hidden;margin-top:8px}
 .progress-fill{height:100%;border-radius:6px;transition:width .3s;background:var(--color-success-emphasis)}
-
-/* Table */
 .gh-table{width:100%;border-collapse:collapse;font-size:13px}
-.gh-table th{
-  font-size:12px;font-weight:600;color:var(--color-fg-muted);
-  padding:8px 12px;border-bottom:1px solid var(--color-border-muted);
-  text-align:left;background:var(--color-canvas-subtle);
-}
-.gh-table td{padding:10px 12px;border-bottom:1px solid var(--color-border-muted);vertical-align:middle}
-.gh-table tr:last-child td{border-bottom:none}
-.gh-table tbody tr:hover{background:rgba(177,186,196,0.04)}
-.gh-table .mono{font-family:var(--font-mono);font-size:12px}
-.gh-table .truncate{max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-
-/* Emoji picker */
-.emoji-row{display:flex;gap:4px;flex-wrap:wrap;margin-top:6px}
-.emoji-opt{
-  font-size:18px;cursor:pointer;
-  border:1px solid transparent;background:transparent;
-  border-radius:var(--radius-sm);padding:4px 8px;
-  opacity:.4;transition:all .1s;line-height:1;
-}
-.emoji-opt:hover,.emoji-opt.sel{opacity:1;background:var(--color-canvas-inset);border-color:var(--color-border-default)}
-
-/* Sleep chart */
-.sleep-bars{display:flex;align-items:flex-end;gap:4px;height:80px;margin:12px 0 4px;padding:0 4px}
-.sleep-bar{flex:1;border-radius:3px 3px 0 0;min-height:3px;transition:height .3s;cursor:default}
-.sleep-labels{display:flex;justify-content:space-between;font-size:10px;font-family:var(--font-mono);color:var(--color-fg-subtle);padding:0 4px}
-
-/* Feed items (events, writing) */
-.feed-item{
-  display:flex;gap:12px;
-  padding:12px 0;
-  border-bottom:1px solid var(--color-border-muted);
-}
-.feed-item:last-child{border-bottom:none}
-.feed-date-block{
-  min-width:44px;text-align:center;
-  background:var(--color-canvas-inset);
-  border:1px solid var(--color-border-muted);
-  border-radius:var(--radius-sm);
-  padding:4px;
-  font-family:var(--font-mono);
-}
-.feed-date-mon{font-size:10px;color:var(--color-fg-muted);text-transform:uppercase}
-.feed-date-day{font-size:20px;font-weight:600;line-height:1.2}
-.feed-date-time{font-size:10px;color:var(--color-fg-muted)}
-
-/* Overview stat pills */
-.overview-item{
-  display:flex;align-items:center;gap:12px;
-  padding:12px 16px;
-  border-bottom:1px solid var(--color-border-muted);
-  font-size:13px;
-}
-.overview-item:last-child{border-bottom:none}
-.overview-icon{font-size:16px;width:24px;text-align:center;flex-shrink:0}
-.overview-key{color:var(--color-fg-muted);min-width:80px}
-.overview-val{color:var(--color-fg-default)}
-
-/* Toast */
-.toast{
-  position:fixed;bottom:20px;right:20px;
-  background:var(--color-canvas-subtle);
-  border:1px solid var(--color-border-default);
-  border-radius:var(--radius-md);
-  padding:10px 14px;
-  font-size:13px;z-index:9999;
-  opacity:0;transform:translateY(8px);
-  transition:all .2s;pointer-events:none;
-  display:flex;align-items:center;gap:8px;
-  box-shadow:0 8px 24px rgba(1,4,9,0.4);
-}
+.gh-table th{font-size:12px;font-weight:600;color:var(--color-fg-muted);padding:8px 12px;border-bottom:1px solid var(--color-border-muted);text-align:left}
+.gh-table td{padding:10px 12px;border-bottom:1px solid var(--color-border-muted)}
+.toast{position:fixed;bottom:20px;right:20px;background:var(--color-canvas-subtle);border:1px solid var(--color-border-default);border-radius:var(--radius-md);padding:10px 14px;font-size:13px;z-index:9999;opacity:0;transform:translateY(8px);transition:all .2s;pointer-events:none;display:flex;align-items:center;gap:8px}
 .toast.show{opacity:1;transform:translateY(0)}
-.toast.success .toast-dot{background:var(--color-success-fg)}
-.toast.error .toast-dot{background:var(--color-danger-fg)}
-.toast-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--color-fg-muted)}
-
-/* Spinner */
-@keyframes spin{to{transform:rotate(360deg)}}
 .spinner{display:inline-block;width:12px;height:12px;border:1.5px solid var(--color-border-default);border-top-color:var(--color-accent-fg);border-radius:50%;animation:spin .6s linear infinite}
-
-/* Sync source tag */
-.source-tag{
-  font-family:var(--font-mono);font-size:10px;
-  color:var(--color-fg-subtle);
-  background:var(--color-canvas-inset);
-  border:1px solid var(--color-border-muted);
-  border-radius:3px;padding:1px 5px;
-}
-
-/* Empty state */
-.empty{
-  text-align:center;padding:40px 20px;
-  color:var(--color-fg-muted);font-size:13px;
-}
-.empty-icon{font-size:32px;margin-bottom:8px;opacity:.4}
-
-/* Responsive */
-@media(max-width:768px){
-  .sidebar{display:none}
-  .main{padding:16px}
-  .stat-grid{grid-template-columns:1fr 1fr}
-  .g3{grid-template-columns:1fr 1fr}
-  .g4{grid-template-columns:1fr 1fr}
-}
-@media(max-width:480px){
-  .g2{grid-template-columns:1fr}
-  .g3{grid-template-columns:1fr}
-  .stat-grid{grid-template-columns:1fr 1fr}
-}
+@keyframes spin{to{transform:rotate(360deg)}}
 </style>
 </head>
 <body>
 
-<!-- GATE -->
-<div id="gate">
-  <div class="gate-box">
-    <div class="gate-logo">
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" style="vertical-align:middle;margin-right:6px"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
-      <span>srijan</span> / studio
-    </div>
-    <div>
-      <div class="gate-title">Authentication required</div>
-      <div class="gate-sub" style="margin-top:4px">Enter your passphrase to continue</div>
-    </div>
-    <div class="field" style="margin-bottom:0">
-      <label class="field-label">Passphrase</label>
-      <input type="password" id="pw-input" placeholder="Enter passphrase" onkeydown="if(event.key==='Enter')checkPw()" autofocus>
-    </div>
-    <div class="gate-err" id="pw-err"></div>
-    <button class="btn btn-primary" onclick="checkPw()" style="width:100%;justify-content:center">
-      <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 1a3.5 3.5 0 0 1 3.5 3.5V6h.5a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h.5V4.5A3.5 3.5 0 0 1 8 1zm0 1A2.5 2.5 0 0 0 5.5 4.5V6h5V4.5A2.5 2.5 0 0 0 8 2z"/></svg>
-      Unlock
-    </button>
-  </div>
-</div>
-
-<!-- APP -->
-<div class="app" id="main-app" style="display:none">
-
-  <!-- Header -->
+<div class="app" id="main-app">
   <div class="header">
     <svg height="24" width="24" viewBox="0 0 16 16" fill="var(--color-fg-default)"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
-    <span class="header-logo" style="font-family:var(--font-mono);font-size:14px">
+    <span class="header-logo">
       <span style="color:var(--color-fg-muted)">srijan</span>
       <span style="color:var(--color-fg-muted)">/</span>
       <span class="header-repo">studio</span>
@@ -435,59 +124,29 @@ input[type=range]:focus{box-shadow:none;border:none}
     </div>
   </div>
 
-  <!-- Tab nav -->
   <div class="tab-nav">
-    <button class="tab-btn active" onclick="setPage('home')">
-      <span class="tab-icon">⊞</span> Overview
-    </button>
-    <button class="tab-btn" onclick="setPage('french')">
-      <span class="tab-icon">🇫🇷</span> French
-      <span class="tab-count" id="tc-french">0</span>
-    </button>
-    <button class="tab-btn" onclick="setPage('writing')">
-      <span class="tab-icon">✍️</span> Writing
-      <span class="tab-count" id="tc-writing">0</span>
-    </button>
-    <button class="tab-btn" onclick="setPage('calendar')">
-      <span class="tab-icon">📅</span> Calendar
-      <span class="tab-count" id="tc-calendar">0</span>
-    </button>
-    <button class="tab-btn" onclick="setPage('fitness')">
-      <span class="tab-icon">💪</span> Fitness
-      <span class="tab-count" id="tc-fitness">0</span>
-    </button>
-    <button class="tab-btn" onclick="setPage('sleep')">
-      <span class="tab-icon">🌙</span> Sleep
-      <span class="tab-count" id="tc-sleep">0</span>
-    </button>
+    <button class="tab-btn active" onclick="setPage('home')">⊞ Overview</button>
+    <button class="tab-btn" onclick="setPage('french')">🇫🇷 French <span class="tab-count" id="tc-french">0</span></button>
+    <button class="tab-btn" onclick="setPage('writing')">✍️ Writing <span class="tab-count" id="tc-writing">0</span></button>
+    <button class="tab-btn" onclick="setPage('calendar')">📅 Calendar <span class="tab-count" id="tc-calendar">0</span></button>
+    <button class="tab-btn" onclick="setPage('fitness')">💪 Fitness <span class="tab-count" id="tc-fitness">0</span></button>
+    <button class="tab-btn" onclick="setPage('sleep')">🌙 Sleep <span class="tab-count" id="tc-sleep">0</span></button>
   </div>
 
-  <!-- Layout -->
   <div class="layout">
-
-    <!-- Sidebar -->
     <div class="sidebar">
       <div class="side-section">
         <div class="side-label">Modules</div>
-        <button class="side-btn active" onclick="setPage('home')"><span class="side-dot" style="background:var(--color-fg-subtle)"></span>Overview</button>
-        <button class="side-btn" onclick="setPage('french')"><span class="side-dot" style="background:var(--color-done-fg)"></span>French<span class="side-count" id="sc-french">0</span></button>
-        <button class="side-btn" onclick="setPage('writing')"><span class="side-dot" style="background:var(--color-attention-fg)"></span>Writing<span class="side-count" id="sc-writing">0</span></button>
-        <button class="side-btn" onclick="setPage('calendar')"><span class="side-dot" style="background:var(--color-sponsors-fg)"></span>Calendar<span class="side-count" id="sc-calendar">0</span></button>
-        <button class="side-btn" onclick="setPage('fitness')"><span class="side-dot" style="background:var(--color-success-fg)"></span>Fitness<span class="side-count" id="sc-fitness">0</span></button>
-        <button class="side-btn" onclick="setPage('sleep')"><span class="side-dot" style="background:var(--color-accent-fg)"></span>Sleep<span class="side-count" id="sc-sleep">0</span></button>
-      </div>
-      <div class="side-section" style="margin-top:auto;padding-top:16px;border-top:1px solid var(--color-border-muted)">
-        <button class="side-btn" onclick="exportAll()">
-          <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M7.47 10.78a.75.75 0 0 0 1.06 0l3.75-3.75a.75.75 0 0 0-1.06-1.06L8.75 8.44V1.75a.75.75 0 0 0-1.5 0v6.69L4.78 5.97a.75.75 0 0 0-1.06 1.06l3.75 3.75zM3.75 13a.75.75 0 0 0 0 1.5h8.5a.75.75 0 0 0 0-1.5h-8.5z"/></svg>
-          Export all CSV
-        </button>
+        <button class="side-btn active" onclick="setPage('home')">Overview</button>
+        <button class="side-btn" onclick="setPage('french')">French <span class="side-count" id="sc-french">0</span></button>
+        <button class="side-btn" onclick="setPage('writing')">Writing <span class="side-count" id="sc-writing">0</span></button>
+        <button class="side-btn" onclick="setPage('calendar')">Calendar <span class="side-count" id="sc-calendar">0</span></button>
+        <button class="side-btn" onclick="setPage('fitness')">Fitness <span class="side-count" id="sc-fitness">0</span></button>
+        <button class="side-btn" onclick="setPage('sleep')">Sleep <span class="side-count" id="sc-sleep">0</span></button>
       </div>
     </div>
 
-    <!-- Main content -->
     <div class="main">
-
-      <!-- HOME -->
       <div class="page active" id="page-home">
         <div class="section-header">
           <div>
@@ -495,740 +154,72 @@ input[type=range]:focus{box-shadow:none;border:none}
             <div style="font-size:12px;color:var(--color-fg-muted);margin-top:2px;font-family:var(--font-mono)" id="greeting-date"></div>
           </div>
         </div>
-
         <div class="box">
-          <div class="box-header"><div class="box-title">
-            <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M1 2.75A.75.75 0 0 1 1.75 2h12.5a.75.75 0 0 1 0 1.5H1.75A.75.75 0 0 1 1 2.75zm0 5A.75.75 0 0 1 1.75 7h12.5a.75.75 0 0 1 0 1.5H1.75A.75.75 0 0 1 1 7.75zM1 12.75a.75.75 0 0 1 .75-.75h12.5a.75.75 0 0 1 0 1.5H1.75a.75.75 0 0 1-.75-.75z"/></svg>
-            Summary
-          </div></div>
+          <div class="box-header"><div class="box-title">Summary</div></div>
           <div id="home-summary"></div>
         </div>
-
-        <div class="box">
-          <div class="box-header">
-            <div class="box-title">
-              <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M4.75 0a.75.75 0 0 1 .75.75V2h5V.75a.75.75 0 0 1 1.5 0V2h1.25c.966 0 1.75.784 1.75 1.75v10.5A1.75 1.75 0 0 1 13.25 16H2.75A1.75 1.75 0 0 1 1 14.25V3.75C1 2.784 1.784 2 2.75 2H4V.75A.75.75 0 0 1 4.75 0zm0 3.5h-.5V5h7.5V3.5H4.75zM2.5 6.5v7.75c0 .138.112.25.25.25h10.5a.25.25 0 0 0 .25-.25V6.5h-11z"/></svg>
-              Upcoming events
-            </div>
-          </div>
-          <div id="home-events" style="padding:0 0 0 0"></div>
-        </div>
       </div>
 
-      <!-- FRENCH -->
-      <div class="page" id="page-french">
-        <div class="section-header">
-          <div class="section-title">French Progress</div>
-          <button class="btn btn-sm" onclick="exportCSV('french')">
-            <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M7.47 10.78a.75.75 0 0 0 1.06 0l3.75-3.75a.75.75 0 0 0-1.06-1.06L8.75 8.44V1.75a.75.75 0 0 0-1.5 0v6.69L4.78 5.97a.75.75 0 0 0-1.06 1.06l3.75 3.75zM3.75 13a.75.75 0 0 0 0 1.5h8.5a.75.75 0 0 0 0-1.5h-8.5z"/></svg>
-            Export CSV
-          </button>
-        </div>
-
-        <div class="stat-grid">
-          <div class="stat-cell"><div class="stat-label">Level</div><div class="stat-val" id="fr-level-disp" style="color:var(--color-done-fg)">A1</div></div>
-          <div class="stat-cell"><div class="stat-label">Streak</div><div class="stat-val" id="fr-streak">0</div><div class="stat-sub">days</div></div>
-          <div class="stat-cell"><div class="stat-label">Sessions</div><div class="stat-val" id="fr-sessions">0</div></div>
-          <div class="stat-cell"><div class="stat-label">Total vocab</div><div class="stat-val" id="fr-vocab">0</div></div>
-        </div>
-
-        <div class="box">
-          <div class="box-header"><div class="box-title">Log session</div>
-            <div class="row">
-              <span style="font-size:12px;color:var(--color-fg-muted)">Level:</span>
-              <select id="fr-level-sel" onchange="setLevel()" style="width:72px;height:26px;font-size:12px">
-                <option>A1</option><option>A2</option><option>B1</option><option>B2</option><option>C1</option><option>C2</option>
-              </select>
-            </div>
-          </div>
-          <div class="box-body">
-            <div class="g2">
-              <div class="field"><label class="field-label">Date</label><input type="date" id="fr-date"></div>
-              <div class="field"><label class="field-label">Duration (min)</label><input type="number" id="fr-dur" placeholder="30" min="1"></div>
-            </div>
-            <div class="g2">
-              <div class="field"><label class="field-label">Method</label>
-                <select id="fr-method"><option>Duolingo</option><option>Anki</option><option>Podcast</option><option>Reading</option><option>Writing</option><option>Speaking</option><option>TV/Film</option><option>Grammar Study</option><option>Textbook</option><option>Other</option></select>
-              </div>
-              <div class="field"><label class="field-label">New vocab words</label><input type="number" id="fr-new-vocab" placeholder="0" min="0"></div>
-            </div>
-            <div class="field"><label class="field-label">Notes</label><textarea id="fr-notes" rows="2" placeholder="What did you study?"></textarea></div>
-            <div class="field">
-              <label class="field-label">Confidence</label>
-              <div class="emoji-row" id="fr-conf-row">
-                <button class="emoji-opt" onclick="pickEmoji('fr-conf',1,this)">😕</button>
-                <button class="emoji-opt" onclick="pickEmoji('fr-conf',2,this)">🤔</button>
-                <button class="emoji-opt" onclick="pickEmoji('fr-conf',3,this)">🙂</button>
-                <button class="emoji-opt" onclick="pickEmoji('fr-conf',4,this)">😊</button>
-                <button class="emoji-opt" onclick="pickEmoji('fr-conf',5,this)">🤩</button>
-              </div>
-            </div>
-            <button class="btn btn-primary" onclick="logFrench()" id="fr-submit-btn">Log session</button>
-          </div>
-        </div>
-
-        <div class="box">
-          <div class="box-header"><div class="box-title">Session history</div></div>
-          <div id="fr-history-table"><p class="empty"><span class="empty-icon">📭</span><br>No sessions yet</p></div>
-        </div>
-      </div>
-
-      <!-- WRITING -->
-      <div class="page" id="page-writing">
-        <div class="section-header">
-          <div class="section-title">Writing Tracker</div>
-          <button class="btn btn-sm" onclick="exportCSV('writing')">
-            <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M7.47 10.78a.75.75 0 0 0 1.06 0l3.75-3.75a.75.75 0 0 0-1.06-1.06L8.75 8.44V1.75a.75.75 0 0 0-1.5 0v6.69L4.78 5.97a.75.75 0 0 0-1.06 1.06l3.75 3.75zM3.75 13a.75.75 0 0 0 0 1.5h8.5a.75.75 0 0 0 0-1.5h-8.5z"/></svg>
-            Export CSV
-          </button>
-        </div>
-
-        <div class="box">
-          <div class="box-header"><div class="box-title" id="wr-form-label">New piece</div></div>
-          <div class="box-body">
-            <input type="hidden" id="wr-edit-id">
-            <div class="g2">
-              <div class="field"><label class="field-label">Title</label><input id="wr-title" placeholder="Article title"></div>
-              <div class="field"><label class="field-label">Publication</label><input id="wr-pub" placeholder="Magazine / outlet"></div>
-            </div>
-            <div class="g3">
-              <div class="field"><label class="field-label">Deadline</label><input type="date" id="wr-deadline"></div>
-              <div class="field"><label class="field-label">Submission date</label><input type="date" id="wr-subdate"></div>
-              <div class="field"><label class="field-label">Status</label>
-                <select id="wr-status"><option>Not started</option><option>In progress</option><option>Draft done</option><option>Editing</option><option>Submitted</option><option>Published</option></select>
-              </div>
-            </div>
-            <div class="field">
-              <label class="field-label">Completion — <span id="wr-pct-disp">0</span>%</label>
-              <input type="range" id="wr-pct" min="0" max="100" value="0" step="1" oninput="document.getElementById('wr-pct-disp').textContent=this.value" style="width:100%;margin-top:8px">
-            </div>
-            <div class="field"><label class="field-label">Notes</label><textarea id="wr-notes" rows="2" placeholder="Angle, editor contact, word count…"></textarea></div>
-            <div class="row">
-              <button class="btn btn-primary" onclick="saveWriting()" id="wr-submit-btn">Save piece</button>
-              <button class="btn" onclick="clearWritingForm()">Clear</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="box">
-          <div class="box-header"><div class="box-title">All pieces</div></div>
-          <div id="wr-list"><p class="empty"><span class="empty-icon">📝</span><br>No pieces yet</p></div>
-        </div>
-      </div>
-
-      <!-- CALENDAR -->
-      <div class="page" id="page-calendar">
-        <div class="section-header">
-          <div class="section-title">Calendar</div>
-          <div class="row">
-            <button class="btn btn-sm" onclick="syncCalendar()" id="sync-btn">
-              <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M1.705 8.005a.75.75 0 0 1 .834.656 5.5 5.5 0 0 0 9.592 2.97l-1.204-1.204a.25.25 0 0 1 .177-.427h3.646a.25.25 0 0 1 .25.25v3.646a.25.25 0 0 1-.427.177l-1.38-1.38A7.002 7.002 0 0 1 1.05 8.84a.75.75 0 0 1 .656-.834zM8 2.5a5.487 5.487 0 0 0-4.131 1.869l1.204 1.204A.25.25 0 0 1 4.896 6H1.25A.25.25 0 0 1 1 5.75V2.104a.25.25 0 0 1 .427-.177l1.38 1.38A7.002 7.002 0 0 1 14.95 7.16a.75.75 0 0 1-1.49.178A5.5 5.5 0 0 0 8 2.5z"/></svg>
-              Sync Google Calendar
-            </button>
-            <button class="btn btn-sm" onclick="exportCSV('calendar')">Export CSV</button>
-          </div>
-        </div>
-
-        <div class="box">
-          <div class="box-header"><div class="box-title">Add event manually</div></div>
-          <div class="box-body">
-            <div class="g2">
-              <div class="field"><label class="field-label">Title</label><input id="cal-title" placeholder="Event name"></div>
-              <div class="field"><label class="field-label">Date & time</label><input type="datetime-local" id="cal-dt"></div>
-            </div>
-            <div class="g2">
-              <div class="field"><label class="field-label">Category</label>
-                <select id="cal-cat"><option>Work</option><option>Music/Press</option><option>Personal</option><option>Health</option><option>French</option><option>Other</option></select>
-              </div>
-              <div class="field"><label class="field-label">Notes</label><input id="cal-notes" placeholder="Optional"></div>
-            </div>
-            <button class="btn btn-primary" onclick="addEvent()" id="cal-submit-btn">Add event</button>
-          </div>
-        </div>
-
-        <div class="box">
-          <div class="box-header"><div class="box-title">Upcoming events</div></div>
-          <div id="cal-list"><p class="empty"><span class="empty-icon">📅</span><br>No events yet</p></div>
-        </div>
-      </div>
-
-      <!-- FITNESS -->
-      <div class="page" id="page-fitness">
-        <div class="section-header">
-          <div class="section-title">Fitness Journal</div>
-          <button class="btn btn-sm" onclick="exportCSV('fitness')">Export CSV</button>
-        </div>
-
-        <div class="stat-grid" style="grid-template-columns:repeat(3,1fr)">
-          <div class="stat-cell"><div class="stat-label">Total sessions</div><div class="stat-val" id="fit-total">0</div></div>
-          <div class="stat-cell"><div class="stat-label">This week</div><div class="stat-val" id="fit-week">0</div></div>
-          <div class="stat-cell"><div class="stat-label">Avg duration</div><div class="stat-val" id="fit-avg">—</div><div class="stat-sub">minutes</div></div>
-        </div>
-
-        <div class="box">
-          <div class="box-header"><div class="box-title">Log workout</div></div>
-          <div class="box-body">
-            <div class="g2">
-              <div class="field"><label class="field-label">Date</label><input type="date" id="fit-date"></div>
-              <div class="field"><label class="field-label">Duration (min)</label><input type="number" id="fit-dur" placeholder="45" min="1"></div>
-            </div>
-            <div class="g2">
-              <div class="field"><label class="field-label">Type</label>
-                <select id="fit-type"><option>Strength</option><option>Cardio</option><option>HIIT</option><option>Yoga</option><option>Walk/Run</option><option>Swimming</option><option>Cycling</option><option>Stretching</option><option>Other</option></select>
-              </div>
-              <div class="field"><label class="field-label">Intensity</label>
-                <select id="fit-intensity"><option value="1">1 — Easy</option><option value="2">2 — Light</option><option value="3" selected>3 — Moderate</option><option value="4">4 — Hard</option><option value="5">5 — Max</option></select>
-              </div>
-            </div>
-            <div class="field"><label class="field-label">Notes / exercises</label><textarea id="fit-notes" rows="2" placeholder="What did you do?"></textarea></div>
-            <button class="btn btn-primary" onclick="logFitness()" id="fit-submit-btn">Log workout</button>
-          </div>
-        </div>
-
-        <div class="box">
-          <div class="box-header"><div class="box-title">Workout history</div></div>
-          <div id="fit-history"><p class="empty"><span class="empty-icon">💪</span><br>No workouts yet</p></div>
-        </div>
-      </div>
-
-      <!-- SLEEP -->
-      <div class="page" id="page-sleep">
-        <div class="section-header">
-          <div class="section-title">Sleep Quality</div>
-          <button class="btn btn-sm" onclick="exportCSV('sleep')">Export CSV</button>
-        </div>
-
-        <div class="stat-grid">
-          <div class="stat-cell"><div class="stat-label">Avg hours</div><div class="stat-val" id="sl-avg-hrs" style="color:var(--color-accent-fg)">—</div></div>
-          <div class="stat-cell"><div class="stat-label">Avg quality</div><div class="stat-val" id="sl-avg-q">—</div><div class="stat-sub">out of 5</div></div>
-          <div class="stat-cell"><div class="stat-label">7h+ streak</div><div class="stat-val" id="sl-streak">0</div><div class="stat-sub">nights</div></div>
-          <div class="stat-cell"><div class="stat-label">Logged nights</div><div class="stat-val" id="sl-count">0</div></div>
-        </div>
-
-        <div class="box">
-          <div class="box-header"><div class="box-title">7-night chart</div></div>
-          <div style="padding:16px 16px 8px">
-            <div class="sleep-bars" id="sleep-chart"><p style="color:var(--color-fg-subtle);font-size:12px;padding:20px 0">No data yet</p></div>
-            <div class="sleep-labels" id="sleep-chart-labels"></div>
-            <div style="margin-top:10px;display:flex;gap:12px;font-size:11px;color:var(--color-fg-muted);font-family:var(--font-mono)">
-              <span><span style="color:#f85149">■</span> Poor</span>
-              <span><span style="color:#d29922">■</span> Fair</span>
-              <span><span style="color:#fbbf24">■</span> OK</span>
-              <span><span style="color:#58a6ff">■</span> Good</span>
-              <span><span style="color:#3fb950">■</span> Great</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="box">
-          <div class="box-header"><div class="box-title">Log last night</div></div>
-          <div class="box-body">
-            <div class="g2">
-              <div class="field"><label class="field-label">Date (night of)</label><input type="date" id="sl-date"></div>
-              <div class="field"><label class="field-label">Hours slept</label><input type="number" id="sl-hrs" placeholder="7.5" step="0.5" min="1" max="14"></div>
-            </div>
-            <div class="g2">
-              <div class="field"><label class="field-label">Bedtime</label><input type="time" id="sl-bed"></div>
-              <div class="field"><label class="field-label">Wake time</label><input type="time" id="sl-wake"></div>
-            </div>
-            <div class="field">
-              <label class="field-label">Quality</label>
-              <div class="emoji-row" id="sl-q-row">
-                <button class="emoji-opt" onclick="pickEmoji('sl-q',1,this)">😫</button>
-                <button class="emoji-opt" onclick="pickEmoji('sl-q',2,this)">😕</button>
-                <button class="emoji-opt" onclick="pickEmoji('sl-q',3,this)">😐</button>
-                <button class="emoji-opt" onclick="pickEmoji('sl-q',4,this)">🙂</button>
-                <button class="emoji-opt" onclick="pickEmoji('sl-q',5,this)">😌</button>
-              </div>
-            </div>
-            <div class="field"><label class="field-label">Notes</label><textarea id="sl-notes" rows="2" placeholder="Dreams, disturbances, caffeine…"></textarea></div>
-            <button class="btn btn-primary" onclick="logSleep()" id="sl-submit-btn">Log sleep</button>
-          </div>
-        </div>
-
-        <div class="box">
-          <div class="box-header"><div class="box-title">Sleep log</div></div>
-          <div id="sl-history"><p class="empty"><span class="empty-icon">🌙</span><br>No entries yet</p></div>
-        </div>
-      </div>
-
-    </div><!-- main -->
-  </div><!-- layout -->
-</div><!-- app -->
+      <div class="page" id="page-french">...</div>
+      <div class="page" id="page-writing">...</div>
+      <div class="page" id="page-calendar">...</div>
+      <div class="page" id="page-fitness">...</div>
+      <div class="page" id="page-sleep">...</div>
+    </div>
+  </div>
+</div>
 
 <div class="toast" id="toast"><div class="toast-dot"></div><span id="toast-msg"></span></div>
 
 <script>
-// ─── CONFIG ───
-const PASSPHRASE='ssxd9862#';
+// CONFIG
 const SUPABASE_URL='https://zrmnwkbhqpburvvmgzus.supabase.co';
 const SUPABASE_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpybW53a2JocXBidXJ2dm1nenVzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzczNjE0NDQsImV4cCI6MjA5MjkzNzQ0NH0.TMpsT4b_3gGX6rcmxEjLTZHkEE3AoiWsVkSP-j97M_s';
-const GCAL_CLIENT_ID='942715737025-j1ank1je7s5kqgc8ur38r1omuh3i1krn.apps.googleusercontent.com';
 
-// ─── SUPABASE ───
 const {createClient}=supabase;
 const db=createClient(SUPABASE_URL,SUPABASE_KEY);
 
-// ─── STATE ───
 const state={fr:[],wr:[],cal:[],fit:[],sl:[],frLevel:'A1'};
 const picked={};
-let gTokenClient=null,gAccessToken=null;
 
-// ─── GATE ───
-function checkPw(){
-  const v=document.getElementById('pw-input').value;
-  if(v===PASSPHRASE){
-    sessionStorage.setItem('studio_auth','1');
-    document.getElementById('gate').style.display='none';
-    document.getElementById('main-app').style.display='flex';
-    init();
-  }else{
-    document.getElementById('pw-err').textContent='Incorrect passphrase';
-    document.getElementById('pw-input').value='';
-    document.getElementById('pw-input').focus();
+// INITIALIZE IMMEDIATELY
+function init(){
+  const t=new Date().toISOString().slice(0,10);
+  ['fr-date','fit-date','sl-date'].forEach(id=>{const el=document.getElementById(id);if(el)el.value=t});
+  loadData();
+}
+
+async function loadData(){
+  document.getElementById('sync-status').textContent='connecting…';
+  try {
+    const [fr, wr, cal, fit, sl] = await Promise.all([
+      db.from('french').select('*').order('created_at',{ascending:false}),
+      db.from('writing').select('*').order('created_at',{ascending:false}),
+      db.from('calendar').select('*').order('created_at',{ascending:false}),
+      db.from('fitness').select('*').order('created_at',{ascending:false}),
+      db.from('sleep').select('*').order('created_at',{ascending:false})
+    ]);
+    state.fr = fr.data || [];
+    state.wr = wr.data || [];
+    state.cal = cal.data || [];
+    state.fit = fit.data || [];
+    state.sl = sl.data || [];
+    
+    document.getElementById('sync-status').textContent='synced';
+    renderHome();
+    updateCounts();
+  } catch(e) {
+    document.getElementById('sync-status').textContent='error';
   }
 }
-if(sessionStorage.getItem('studio_auth')==='1'){
-  document.getElementById('gate').style.display='none';
-  document.getElementById('main-app').style.display='flex';
-}
 
-// ─── TOAST ───
-function toast(msg,type='success'){
-  document.getElementById('toast-msg').textContent=msg;
-  const el=document.getElementById('toast');
-  el.className='toast '+type+' show';
-  setTimeout(()=>el.className='toast',3000);
-}
-
-// ─── UTILS ───
-function today(){return new Date().toISOString().slice(0,10)}
-function setBtn(id,loading,label='Saving…'){
-  const b=document.getElementById(id);if(!b)return;
-  b.disabled=loading;
-  if(loading){b.dataset.orig=b.innerHTML;b.innerHTML=`<span class="spinner"></span>${label}`}
-  else if(b.dataset.orig){b.innerHTML=b.dataset.orig}
-}
-function pickEmoji(key,v,el){
-  picked[key]=v;
-  el.parentElement.querySelectorAll('.emoji-opt').forEach(b=>b.classList.remove('sel'));
-  el.classList.add('sel');
-}
-function updateCounts(){
-  const sets={french:state.fr.length,writing:state.wr.length,calendar:state.cal.filter(x=>new Date(x.dt)>=new Date()).length,fitness:state.fit.length,sleep:state.sl.length};
-  Object.entries(sets).forEach(([k,v])=>{
-    ['tc-','sc-'].forEach(p=>{const el=document.getElementById(p+k);if(el)el.textContent=v});
-  });
-}
-
-// ─── DB HELPERS ───
-async function dbGet(table){const{data,error}=await db.from(table).select('*').order('created_at',{ascending:false});if(error)throw error;return data||[]}
-async function dbInsert(table,row){const{error}=await db.from(table).insert(row);if(error)throw error}
-async function dbUpdate(table,id,row){const{error}=await db.from(table).update(row).eq('id',id);if(error)throw error}
-async function dbDelete(table,id){const{error}=await db.from(table).delete().eq('id',id);if(error)throw error}
-async function dbGetSetting(key){const{data}=await db.from('settings').select('value').eq('key',key).maybeSingle();return data?data.value:null}
-async function dbSetSetting(key,value){await db.from('settings').upsert({key,value})}
-
-// ─── NAV ───
 function setPage(p){
   document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
-  document.querySelectorAll('.tab-btn').forEach(x=>x.classList.remove('active'));
-  document.querySelectorAll('.side-btn').forEach(x=>x.classList.remove('active'));
   document.getElementById('page-'+p).classList.add('active');
-  [...document.querySelectorAll('.tab-btn')].find(b=>b.getAttribute('onclick')===`setPage('${p}')`).classList.add('active');
-  [...document.querySelectorAll('.side-btn')].find(b=>b.getAttribute('onclick')===`setPage('${p}')`)?.classList.add('active');
-  ({home:renderHome,french:renderFrench,writing:renderWriting,calendar:renderCalendar,fitness:renderFitness,sleep:renderSleep})[p]?.();
 }
 
-// ─── GOOGLE CALENDAR ───
-function initGoogleAuth(){
-  try{
-    gTokenClient=google.accounts.oauth2.initTokenClient({
-      client_id:GCAL_CLIENT_ID,
-      scope:'https://www.googleapis.com/auth/calendar.readonly',
-      callback:async(resp)=>{
-        if(resp.error){toast('Google auth error: '+resp.error,'error');setBtn('sync-btn',false);return}
-        gAccessToken=resp.access_token;
-        await fetchGoogleEvents();
-      }
-    });
-  }catch(e){console.warn('GIS not ready:',e)}
-}
-async function syncCalendar(){
-  setBtn('sync-btn',true,'Connecting…');
-  try{
-    if(!gTokenClient)initGoogleAuth();
-    if(!gAccessToken){gTokenClient.requestAccessToken({prompt:'consent'})}
-    else{await fetchGoogleEvents()}
-  }catch(e){toast('Sync failed: '+e.message,'error');setBtn('sync-btn',false)}
-}
-async function fetchGoogleEvents(){
-  setBtn('sync-btn',true,'Fetching…');
-  try{
-    const now=new Date().toISOString();
-    const future=new Date(Date.now()+30*864e5).toISOString();
-    const url=`https://www.googleapis.com/calendar/v3/calendars/primary/events?timeMin=${encodeURIComponent(now)}&timeMax=${encodeURIComponent(future)}&singleEvents=true&orderBy=startTime&maxResults=50`;
-    const resp=await fetch(url,{headers:{Authorization:'Bearer '+gAccessToken}});
-    if(!resp.ok){if(resp.status===401){gAccessToken=null;toast('Session expired, sync again','error');setBtn('sync-btn',false);return}throw new Error('HTTP '+resp.status)}
-    const data=await resp.json();
-    const items=data.items||[];
-    let added=0;
-    for(const ev of items){
-      const dt=ev.start.dateTime||ev.start.date+'T00:00:00';
-      const title=ev.summary||'(No title)';
-      if(!state.cal.some(x=>x.title===title&&x.dt===dt)){
-        const row={id:Date.now()+Math.random(),title,dt,cat:'Work',notes:ev.description||'',source:'google'};
-        await dbInsert('calendar',row);state.cal.push(row);added++;
-      }
-    }
-    toast(`Synced — ${added} new event${added!==1?'s':''} ✓`);
-    updateCounts();renderCalendar();
-  }catch(e){toast('Fetch failed: '+e.message,'error')}
-  setBtn('sync-btn',false);
-}
-
-// ─── FRENCH ───
-async function logFrench(){
-  const dur=+document.getElementById('fr-dur').value;
-  if(!dur){toast('Enter a duration','error');return}
-  setBtn('fr-submit-btn',true);
-  const row={id:Date.now(),date:document.getElementById('fr-date').value||today(),dur,method:document.getElementById('fr-method').value,vocab:+document.getElementById('fr-new-vocab').value||0,notes:document.getElementById('fr-notes').value,conf:picked['fr-conf']||3};
-  try{
-    await dbInsert('french',row);state.fr.unshift(row);
-    toast('Session logged ✓');
-    ['fr-dur','fr-new-vocab','fr-notes'].forEach(i=>document.getElementById(i).value='');
-    document.getElementById('fr-date').value=today();
-    picked['fr-conf']=undefined;
-    document.querySelectorAll('#fr-conf-row .emoji-opt').forEach(b=>b.classList.remove('sel'));
-    updateCounts();renderFrench();
-  }catch(e){toast('Error: '+e.message,'error')}
-  setBtn('fr-submit-btn',false);
-}
-async function setLevel(){
-  const v=document.getElementById('fr-level-sel').value;
-  state.frLevel=v;await dbSetSetting('frLevel',v);
-  document.getElementById('fr-level-disp').textContent=v;
-}
-async function deleteFr(id){
-  if(!confirm('Delete this session?'))return;
-  await dbDelete('french',id);state.fr=state.fr.filter(x=>x.id!=id);
-  updateCounts();renderFrench();toast('Deleted');
-}
-function renderFrench(){
-  document.getElementById('fr-level-sel').value=state.frLevel;
-  document.getElementById('fr-level-disp').textContent=state.frLevel;
-  document.getElementById('fr-sessions').textContent=state.fr.length;
-  document.getElementById('fr-vocab').textContent=state.fr.reduce((a,x)=>a+(+x.vocab||0),0);
-  const dates=[...new Set(state.fr.map(x=>x.date))].sort().reverse();
-  let streak=0,cur=today();
-  for(const d of dates){if(d===cur){streak++;const dt=new Date(cur);dt.setDate(dt.getDate()-1);cur=dt.toISOString().slice(0,10)}else break}
-  document.getElementById('fr-streak').textContent=streak;
-  const el=document.getElementById('fr-history-table');
-  if(!state.fr.length){el.innerHTML='<p class="empty"><span class="empty-icon">📭</span><br>No sessions yet</p>';return}
-  const conf_e=['','😕','🤔','🙂','😊','🤩'];
-  el.innerHTML=`<div style="overflow-x:auto"><table class="gh-table"><thead><tr><th>Date</th><th>Method</th><th>Min</th><th>Vocab</th><th>Conf</th><th>Notes</th><th></th></tr></thead><tbody>`+
-    state.fr.map(x=>`<tr>
-      <td class="mono">${x.date}</td>
-      <td>${x.method}</td>
-      <td class="mono">${x.dur}</td>
-      <td class="mono">${x.vocab||0}</td>
-      <td>${conf_e[x.conf]||'–'}</td>
-      <td class="truncate" style="color:var(--color-fg-muted)">${x.notes||'—'}</td>
-      <td><button class="btn btn-sm btn-danger" onclick="deleteFr(${x.id})">Delete</button></td>
-    </tr>`).join('')+`</tbody></table></div>`;
-}
-
-// ─── WRITING ───
-async function saveWriting(){
-  const title=document.getElementById('wr-title').value.trim();
-  if(!title){toast('Title required','error');return}
-  setBtn('wr-submit-btn',true);
-  const editId=document.getElementById('wr-edit-id').value;
-  const row={title,pub:document.getElementById('wr-pub').value,deadline:document.getElementById('wr-deadline').value,subdate:document.getElementById('wr-subdate').value,status:document.getElementById('wr-status').value,pct:+document.getElementById('wr-pct').value,notes:document.getElementById('wr-notes').value};
-  try{
-    if(editId){
-      await dbUpdate('writing',editId,row);
-      const idx=state.wr.findIndex(x=>x.id==editId);
-      if(idx>-1)state.wr[idx]={...state.wr[idx],...row};
-      toast('Updated ✓');
-    }else{
-      const newRow={id:Date.now(),...row};
-      await dbInsert('writing',newRow);state.wr.unshift(newRow);
-      toast('Piece saved ✓');
-    }
-    clearWritingForm();updateCounts();renderWriting();
-  }catch(e){toast('Error: '+e.message,'error')}
-  setBtn('wr-submit-btn',false);
-}
-function clearWritingForm(){
-  ['wr-edit-id','wr-title','wr-pub','wr-deadline','wr-subdate','wr-notes'].forEach(i=>document.getElementById(i).value='');
-  document.getElementById('wr-pct').value=0;document.getElementById('wr-pct-disp').textContent='0';
-  document.getElementById('wr-status').value='Not started';
-  document.getElementById('wr-form-label').textContent='New piece';
-}
-function editWriting(id){
-  const x=state.wr.find(w=>w.id==id);if(!x)return;
-  document.getElementById('wr-edit-id').value=x.id;
-  document.getElementById('wr-title').value=x.title||'';
-  document.getElementById('wr-pub').value=x.pub||'';
-  document.getElementById('wr-deadline').value=x.deadline||'';
-  document.getElementById('wr-subdate').value=x.subdate||'';
-  document.getElementById('wr-status').value=x.status||'Not started';
-  document.getElementById('wr-pct').value=x.pct||0;
-  document.getElementById('wr-pct-disp').textContent=x.pct||0;
-  document.getElementById('wr-notes').value=x.notes||'';
-  document.getElementById('wr-form-label').textContent='Edit piece';
-  window.scrollTo({top:0,behavior:'smooth'});
-}
-async function deleteWriting(id){
-  if(!confirm('Delete this piece?'))return;
-  await dbDelete('writing',id);state.wr=state.wr.filter(x=>x.id!=id);
-  updateCounts();renderWriting();toast('Deleted');
-}
-function renderWriting(){
-  const el=document.getElementById('wr-list');
-  if(!state.wr.length){el.innerHTML='<p class="empty"><span class="empty-icon">📝</span><br>No pieces yet</p>';return}
-  const statusBadge={'Not started':'badge-gray','In progress':'badge-yellow','Draft done':'badge-blue','Editing':'badge-purple','Submitted':'badge-green','Published':'badge-green'};
-  const td=today();
-  el.innerHTML=`<div style="overflow-x:auto"><table class="gh-table"><thead><tr><th>Title</th><th>Publication</th><th>Status</th><th>Progress</th><th>Deadline</th><th></th></tr></thead><tbody>`+
-    state.wr.map(x=>{
-      const overdue=x.deadline&&x.deadline<td&&x.status!=='Submitted'&&x.status!=='Published';
-      return`<tr>
-        <td style="font-weight:500">${x.title}${overdue?'<span class="badge badge-red" style="margin-left:8px">overdue</span>':''}</td>
-        <td style="color:var(--color-fg-muted)">${x.pub||'—'}</td>
-        <td><span class="badge ${statusBadge[x.status]||'badge-gray'}">${x.status}</span></td>
-        <td style="min-width:120px">
-          <div style="display:flex;align-items:center;gap:8px">
-            <div class="progress-wrap" style="flex:1;margin-top:0"><div class="progress-fill" style="width:${x.pct||0}%"></div></div>
-            <span class="mono" style="font-size:11px;color:var(--color-fg-muted);min-width:30px">${x.pct||0}%</span>
-          </div>
-        </td>
-        <td class="mono" style="color:${overdue?'var(--color-danger-fg)':'var(--color-fg-muted)'}">${x.deadline||'—'}</td>
-        <td><div class="row"><button class="btn btn-sm" onclick="editWriting(${x.id})">Edit</button><button class="btn btn-sm btn-danger" onclick="deleteWriting(${x.id})">Delete</button></div></td>
-      </tr>`;
-    }).join('')+`</tbody></table></div>`;
-}
-
-// ─── CALENDAR ───
-async function addEvent(){
-  const title=document.getElementById('cal-title').value.trim();
-  const dt=document.getElementById('cal-dt').value;
-  if(!title||!dt){toast('Title and date required','error');return}
-  setBtn('cal-submit-btn',true);
-  const row={id:Date.now(),title,dt,cat:document.getElementById('cal-cat').value,notes:document.getElementById('cal-notes').value,source:'manual'};
-  try{
-    await dbInsert('calendar',row);state.cal.push(row);
-    ['cal-title','cal-dt','cal-notes'].forEach(i=>document.getElementById(i).value='');
-    toast('Event added ✓');updateCounts();renderCalendar();
-  }catch(e){toast('Error: '+e.message,'error')}
-  setBtn('cal-submit-btn',false);
-}
-async function deleteEvent(id){
-  await dbDelete('calendar',id);state.cal=state.cal.filter(x=>x.id!=id);
-  updateCounts();renderCalendar();toast('Deleted');
-}
-function renderCalendar(){
-  const el=document.getElementById('cal-list');
-  const now=new Date();
-  const upcoming=[...state.cal].filter(x=>new Date(x.dt)>=now).sort((a,b)=>new Date(a.dt)-new Date(b.dt));
-  if(!upcoming.length){el.innerHTML='<p class="empty"><span class="empty-icon">📅</span><br>No upcoming events</p>';return}
-  const catColor={'Work':'badge-blue','Music/Press':'badge-purple','Personal':'badge-gray','Health':'badge-green','French':'badge-purple','Other':'badge-gray'};
-  el.innerHTML=`<div style="padding:8px 16px">`+upcoming.map(x=>{
-    const dt=new Date(x.dt);
-    const mon=dt.toLocaleString('en-IN',{month:'short'});
-    const day=dt.getDate();
-    const time=dt.toLocaleString('en-IN',{hour:'2-digit',minute:'2-digit'});
-    return`<div class="feed-item">
-      <div class="feed-date-block">
-        <div class="feed-date-mon">${mon}</div>
-        <div class="feed-date-day">${day}</div>
-        <div class="feed-date-time">${time}</div>
-      </div>
-      <div style="flex:1;min-width:0">
-        <div class="row-between">
-          <span style="font-weight:500;font-size:13px">${x.title}</span>
-          <div class="row" style="flex-shrink:0;gap:6px">
-            ${x.source==='google'?'<span class="source-tag">google</span>':''}
-            <span class="badge ${catColor[x.cat]||'badge-gray'}">${x.cat}</span>
-            <button class="btn btn-sm btn-danger" onclick="deleteEvent(${x.id})">Delete</button>
-          </div>
-        </div>
-        ${x.notes?`<div style="font-size:12px;color:var(--color-fg-muted);margin-top:3px">${x.notes}</div>`:''}
-      </div>
-    </div>`;
-  }).join('')+`</div>`;
-}
-
-// ─── FITNESS ───
-async function logFitness(){
-  const dur=+document.getElementById('fit-dur').value;
-  if(!dur){toast('Enter a duration','error');return}
-  setBtn('fit-submit-btn',true);
-  const row={id:Date.now(),date:document.getElementById('fit-date').value||today(),dur,type:document.getElementById('fit-type').value,intensity:+document.getElementById('fit-intensity').value,notes:document.getElementById('fit-notes').value};
-  try{
-    await dbInsert('fitness',row);state.fit.unshift(row);
-    toast('Workout logged ✓');
-    ['fit-dur','fit-notes'].forEach(i=>document.getElementById(i).value='');
-    document.getElementById('fit-date').value=today();
-    updateCounts();renderFitness();
-  }catch(e){toast('Error: '+e.message,'error')}
-  setBtn('fit-submit-btn',false);
-}
-async function deleteFit(id){
-  if(!confirm('Delete this workout?'))return;
-  await dbDelete('fitness',id);state.fit=state.fit.filter(x=>x.id!=id);
-  updateCounts();renderFitness();toast('Deleted');
-}
-function renderFitness(){
-  document.getElementById('fit-total').textContent=state.fit.length;
-  const weekAgo=new Date(Date.now()-7*864e5);
-  document.getElementById('fit-week').textContent=state.fit.filter(x=>new Date(x.date)>=weekAgo).length;
-  const avg=state.fit.length?Math.round(state.fit.reduce((a,x)=>a+(+x.dur||0),0)/state.fit.length):0;
-  document.getElementById('fit-avg').textContent=avg||'—';
-  const el=document.getElementById('fit-history');
-  if(!state.fit.length){el.innerHTML='<p class="empty"><span class="empty-icon">💪</span><br>No workouts yet</p>';return}
-  const typeColor={Strength:'badge-purple',Cardio:'badge-green',HIIT:'badge-yellow',Yoga:'badge-blue','Walk/Run':'badge-green'};
-  el.innerHTML=`<div style="overflow-x:auto"><table class="gh-table"><thead><tr><th>Date</th><th>Type</th><th>Min</th><th>Intensity</th><th>Notes</th><th></th></tr></thead><tbody>`+
-    state.fit.map(x=>`<tr>
-      <td class="mono">${x.date}</td>
-      <td><span class="badge ${typeColor[x.type]||'badge-gray'}">${x.type}</span></td>
-      <td class="mono">${x.dur}</td>
-      <td class="mono">${'█'.repeat(x.intensity)}<span style="color:var(--color-border-default)">${'█'.repeat(5-x.intensity)}</span></td>
-      <td class="truncate" style="color:var(--color-fg-muted)">${x.notes||'—'}</td>
-      <td><button class="btn btn-sm btn-danger" onclick="deleteFit(${x.id})">Delete</button></td>
-    </tr>`).join('')+`</tbody></table></div>`;
-}
-
-// ─── SLEEP ───
-async function logSleep(){
-  const hrs=+document.getElementById('sl-hrs').value;
-  if(!hrs){toast('Enter hours slept','error');return}
-  setBtn('sl-submit-btn',true);
-  const row={id:Date.now(),date:document.getElementById('sl-date').value||today(),hrs,bed:document.getElementById('sl-bed').value,wake:document.getElementById('sl-wake').value,q:picked['sl-q']||3,notes:document.getElementById('sl-notes').value};
-  try{
-    await dbInsert('sleep',row);state.sl.unshift(row);
-    toast('Sleep logged ✓');
-    ['sl-hrs','sl-bed','sl-wake','sl-notes'].forEach(i=>document.getElementById(i).value='');
-    document.getElementById('sl-date').value=today();
-    picked['sl-q']=undefined;
-    document.querySelectorAll('#sl-q-row .emoji-opt').forEach(b=>b.classList.remove('sel'));
-    updateCounts();renderSleep();
-  }catch(e){toast('Error: '+e.message,'error')}
-  setBtn('sl-submit-btn',false);
-}
-async function deleteSleep(id){
-  if(!confirm('Delete this entry?'))return;
-  await dbDelete('sleep',id);state.sl=state.sl.filter(x=>x.id!=id);
-  updateCounts();renderSleep();toast('Deleted');
-}
-function renderSleep(){
-  const n=state.sl.length;
-  document.getElementById('sl-count').textContent=n;
-  if(n){
-    document.getElementById('sl-avg-hrs').textContent=(state.sl.reduce((a,x)=>a+(+x.hrs||0),0)/n).toFixed(1)+'h';
-    document.getElementById('sl-avg-q').textContent=(state.sl.reduce((a,x)=>a+(+x.q||0),0)/n).toFixed(1);
-  }
-  const sorted=[...state.sl].sort((a,b)=>a.date>b.date?-1:1);
-  let streak=0;for(const x of sorted){if((+x.hrs||0)>=7)streak++;else break}
-  document.getElementById('sl-streak').textContent=streak;
-  const last7=[...state.sl].sort((a,b)=>a.date>b.date?-1:1).slice(0,7).reverse();
-  const chart=document.getElementById('sleep-chart');
-  const labels=document.getElementById('sleep-chart-labels');
-  const maxH=last7.length?Math.max(...last7.map(x=>+x.hrs||0),8):8;
-  const qColors=['','#f85149','#d29922','#fbbf24','#58a6ff','#3fb950'];
-  if(last7.length){
-    chart.innerHTML=last7.map(x=>`<div class="sleep-bar" style="background:${qColors[x.q]||'#58a6ff'};height:${Math.round(((+x.hrs||0)/maxH)*76)+4}px" title="${x.hrs}h · quality ${x.q}/5"></div>`).join('');
-    labels.innerHTML=last7.map(x=>`<span>${x.date.slice(5)}</span>`).join('');
-  }else{
-    chart.innerHTML='<p style="color:var(--color-fg-subtle);font-size:12px;font-family:var(--font-mono);padding:20px 0">no data</p>';
-    labels.innerHTML='';
-  }
-  const el=document.getElementById('sl-history');
-  if(!state.sl.length){el.innerHTML='<p class="empty"><span class="empty-icon">🌙</span><br>No entries yet</p>';return}
-  const ql=['','😫','😕','😐','🙂','😌'];
-  el.innerHTML=`<div style="overflow-x:auto"><table class="gh-table"><thead><tr><th>Date</th><th>Hours</th><th>Bedtime</th><th>Wake</th><th>Quality</th><th>Notes</th><th></th></tr></thead><tbody>`+
-    state.sl.map(x=>`<tr>
-      <td class="mono">${x.date}</td>
-      <td class="mono">${x.hrs}h</td>
-      <td class="mono">${x.bed||'—'}</td>
-      <td class="mono">${x.wake||'—'}</td>
-      <td>${ql[x.q]||'—'}</td>
-      <td class="truncate" style="color:var(--color-fg-muted)">${x.notes||'—'}</td>
-      <td><button class="btn btn-sm btn-danger" onclick="deleteSleep(${x.id})">Delete</button></td>
-    </tr>`).join('')+`</tbody></table></div>`;
-}
-
-// ─── HOME ───
-function renderHome(){
-  const h=new Date().getHours();
-  const greet=h<12?'Good morning':'h<17?Good afternoon':'Good evening';
-  document.getElementById('greeting-text').textContent=h<12?'Good morning, Srijan':h<17?'Good afternoon, Srijan':'Good evening, Srijan';
-  document.getElementById('greeting-date').textContent=new Date().toLocaleDateString('en-IN',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
-  const frS=state.fr.length,slS=state.sl.length,wrS=state.wr.length,fitS=state.fit.length;
-  const frAvgConf=frS?(state.fr.reduce((a,x)=>a+(+x.conf||0),0)/frS).toFixed(1):'—';
-  const slAvgH=slS?(state.sl.reduce((a,x)=>a+(+x.hrs||0),0)/slS).toFixed(1):'—';
-  const wrActive=state.wr.filter(x=>x.status==='In progress'||x.status==='Editing').length;
-  const fitWeek=state.fit.filter(x=>new Date(x.date)>=new Date(Date.now()-7*864e5)).length;
-  document.getElementById('home-summary').innerHTML=`
-    <div class="overview-item"><span class="overview-icon">🇫🇷</span><span class="overview-key">French</span><span class="overview-val">${frS} sessions · ${state.frLevel} · avg confidence ${frAvgConf}/5</span></div>
-    <div class="overview-item"><span class="overview-icon">✍️</span><span class="overview-key">Writing</span><span class="overview-val">${wrS} piece${wrS!==1?'s':''} tracked · ${wrActive} active</span></div>
-    <div class="overview-item"><span class="overview-icon">💪</span><span class="overview-key">Fitness</span><span class="overview-val">${fitS} total workouts · ${fitWeek} this week</span></div>
-    <div class="overview-item"><span class="overview-icon">🌙</span><span class="overview-key">Sleep</span><span class="overview-val">${slS} nights logged · avg ${slAvgH}h</span></div>
-  `;
-  const now=new Date();
-  const upcoming=[...state.cal].filter(x=>new Date(x.dt)>=now).sort((a,b)=>new Date(a.dt)-new Date(b.dt)).slice(0,5);
-  const hel=document.getElementById('home-events');
-  hel.innerHTML=upcoming.length?`<div style="padding:0 16px">`+upcoming.map(x=>{
-    const dt=new Date(x.dt);
-    return`<div style="padding:10px 0;border-bottom:1px solid var(--color-border-muted);display:flex;gap:10px;align-items:center;font-size:13px">
-      <span class="mono" style="color:var(--color-fg-muted);min-width:110px">${dt.toLocaleDateString('en-IN',{month:'short',day:'numeric'})} ${dt.toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit'})}</span>
-      <span style="font-weight:500">${x.title}</span>
-    </div>`;
-  }).join('')+`</div>`:'<p class="empty" style="padding:24px"><span class="empty-icon" style="font-size:24px">📭</span><br>No upcoming events</p>';
-}
-
-// ─── CSV EXPORT ───
-function toCSV(arr,fields){
-  if(!arr.length)return fields.join(',')+'\n(no data)';
-  return[fields.join(','),...arr.map(x=>fields.map(f=>`"${(x[f]||'').toString().replace(/"/g,'""')}"`).join(','))].join('\n');
-}
-function dlCSV(content,name){
-  const a=document.createElement('a');
-  a.href='data:text/csv;charset=utf-8,'+encodeURIComponent(content);
-  a.download=name+'_'+today()+'.csv';a.click();
-}
-function exportCSV(mod){
-  const map={french:{data:state.fr,fields:['date','method','dur','vocab','conf','notes']},writing:{data:state.wr,fields:['title','pub','status','pct','deadline','subdate','notes']},calendar:{data:state.cal,fields:['title','dt','cat','notes','source']},fitness:{data:state.fit,fields:['date','type','dur','intensity','notes']},sleep:{data:state.sl,fields:['date','hrs','bed','wake','q','notes']}};
-  const m=map[mod];if(m)dlCSV(toCSV(m.data,m.fields),'srijan_'+mod);
-}
-function exportAll(){['french','writing','calendar','fitness','sleep'].forEach((m,i)=>setTimeout(()=>exportCSV(m),i*400))}
-
-// ─── INIT ───
-async function init(){
-  const t=today();
-  ['fr-date','fit-date','sl-date'].forEach(id=>{const el=document.getElementById(id);if(el)el.value=t});
-  document.getElementById('sync-status').textContent='connecting…';
-  try{initGoogleAuth()}catch(e){}
-  try{
-    await Promise.all([
-      dbGet('french').then(d=>state.fr=d),
-      dbGet('writing').then(d=>state.wr=d),
-      dbGet('calendar').then(d=>state.cal=d),
-      dbGet('fitness').then(d=>state.fit=d),
-      dbGet('sleep').then(d=>state.sl=d),
-      dbGetSetting('frLevel').then(v=>{if(v)state.frLevel=v}),
-    ]);
-    document.getElementById('sync-status').textContent='synced';
-    setTimeout(()=>document.getElementById('sync-status').textContent='',2000);
-    updateCounts();renderHome();renderFrench();renderWriting();renderCalendar();renderFitness();renderSleep();
-  }catch(e){
-    document.getElementById('sync-status').textContent='db error';
-    toast('Database error: '+e.message,'error');
-    console.error(e);
-  }
-}
-
-if(sessionStorage.getItem('studio_auth')==='1')init();
+// Start app
+init();
 </script>
 </body>
 </html>
